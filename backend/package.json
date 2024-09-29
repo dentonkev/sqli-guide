@@ -4,11 +4,12 @@
   "description": "Guide to teach users about SQL injection. Part of my COMP6841 something awesome project.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.js"
+    "start": "nodemon src/index.js",
+    "load-db": "psql -U dentonkev -d sqli_guide -f src/db/schema.sql && psql -U dentonkev -d sqli_guide -f src/db/questions.sql"
   },
   "author": "Denton Kev",
   "license": "ISC",
-  "type": "module", 
+  "type": "module",
   "dependencies": {
     "axios": "^1.7.7",
     "body-parser": "^1.20.3",
