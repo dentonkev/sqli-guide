@@ -12,6 +12,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+// http://localhost:5000/
 const port = process.env.PORT ;
 const host = process.env.HOST;
 
