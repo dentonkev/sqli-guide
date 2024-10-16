@@ -5,14 +5,17 @@ import axios from 'axios';
 const Questions = () => {
   const { qid } = useParams();
   const [question, setQuestion] = useState();
-  const [userQuery, setUserQuery] = useState(null);
+  const [userQuery, setUserQuery] = useState('');
   const [message, setMessage] = useState('');
   const [query, setQuery] = useState('');
+  const [success, setSuccess] = useState(false);
+  const [hints, setHints] = useState([]);
 
   useEffect(() => {
     const getQuestion = async () => {
       const res = await axios.get(`http://localhost:5000/api/questions/${qid}`);
       setQuestion(res.data);
+      setHints(new Array(res.data.hints.length).fill(false));
     }
     getQuestion();
   }, [qid]);
@@ -23,6 +26,16 @@ const Questions = () => {
     });
     setMessage(res.data.message);
     setQuery(res.data.query);
+
+    if (res.data.success) {
+      setSuccess(true);
+    }
+  }
+
+  const toggleHint = (index) => {
+    let newHints = [...hints];
+    newHints[index] = !newHints[index];
+    setHints(newHints);
   }
 
   if (!question) {
@@ -40,10 +53,24 @@ const Questions = () => {
             placeholder='Enter SQL Injection'
           />
           <button onClick={() => submit()} >Submit</button>
-          <div>{message}</div>
-          <div>{query}</div>
+
+          <p><b>Injected query:</b> {query}</p>
+          <p><b>Response: </b><span style={{ color: success === true ? 'green' : 'red'}}>{message}</span></p>
         </div>
-        <div>Hints: {question.hints.join(', ')}</div>
+        <div>
+          <h3>Hints:</h3>
+          {
+            question.hints.map((hint, index) => (
+              <div key={index}>
+                <button 
+                  onClick={() => toggleHint(index)}>
+                  Toggle Hint {index + 1}
+                </button>
+                <p>{hints[index] ? hint : ''}</p>
+              </div>
+            ))
+          }
+        </div>
     </div>
   );
 }
