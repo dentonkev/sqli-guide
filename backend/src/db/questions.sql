@@ -7,7 +7,7 @@ VALUES (
     ARRAY [
         'An OR clause could be helpful here', 
         'After your input there still might be some code, try commenting it out', 
-        'Comments in sql must be followed by a space'
+        'Choose something after your OR clause that will always be true'
     ]
 );
 
