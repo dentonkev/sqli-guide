@@ -54,7 +54,7 @@ router.post('/submit', async (req, res) => {
       res.json({ success: false, query: query, message: "Unsuccessful injection, valid query" });
     }
   } catch (err) {
-    res.status(400).json({ success: false, message: "Unsuccessful injection, invalid query" });
+    res.json({ success: false, message: "Unsuccessful injection, invalid query" });
   }
 });
 
