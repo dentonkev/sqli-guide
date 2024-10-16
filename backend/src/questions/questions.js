@@ -21,7 +21,7 @@ const inject = async (res, query, userQuery, qNum) => {
       return res.json({ success: false, query: query, message: "Unsuccessful injection, valid query" });
     }
   } catch (err) {
-    return res.json({ success: false, message: "Unsuccessful injection, invalid query" });
+    return res.json({ success: false, query: query, message: "Unsuccessful injection, invalid query" });
   }
 }
 
@@ -67,7 +67,7 @@ router.post('/submit/q2', async (req, res) => {
   const values = userQuery.split(', ');
 
   if (values.length !== 2) {
-    return res.status(400).json({ success: false, message: 'Please required input format' });
+    return res.status(400).json({ success: false, message: 'Please provide both username and password in the format: <username>, <password>' });
   }
 
   const response = await pool.query('SELECT query FROM questions WHERE id = $1', ['q2']);
