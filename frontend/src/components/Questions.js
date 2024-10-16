@@ -13,7 +13,7 @@ const Questions = () => {
     const getQuestions = async () => {
       let receivedQuestions = []
       for (const qid of qids) {
-        const res = await axios.get(`api/questions/${qid}`);
+        const res = await axios.get(`http://localhost:5000/api/questions/${qid}`);
         receivedQuestions.push(res.data)
       }
       setQuestions(receivedQuestions);
@@ -23,7 +23,7 @@ const Questions = () => {
 
   const submit = async (qid) => {
     console.log("Submitting query:", { userQuery: userQuery[qid], qid: qid });
-    const res = await axios.post(`api/questions/submit`, {
+    const res = await axios.post(`http://localhost:5000/api/questions/submit`, {
       userQuery: userQuery[qid],
       qid: qid
     }, {
