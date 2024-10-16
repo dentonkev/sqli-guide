@@ -15,7 +15,7 @@ router.get('/:qid', async (req, res) => {
     if (response.rows.length > 0) {
       res.json(response.rows[0]);
     } else {
-      res.status(404).json({ message: `Question ${qid} not found.`});
+      res.status(404).json({ message: `Question ${qid} not found.` });
     }
   } catch {
     res.status(500).json({ error: `Failed to fetch question ${qid}` });
@@ -29,7 +29,7 @@ router.get('/:qid/hints', async (req, res) => {
     if (response.rows.length > 0) {
       res.json(response.rows[0]);
     } else {
-      res.status(404).json({ message: `Question hints for ${qid} not found.`});
+      res.status(404).json({ message: `Question hints for ${qid} not found.` });
     }
   } catch {
     res.status(500).json({ error: `Failed to fetch hints for question ${qid}` });
@@ -49,12 +49,12 @@ router.post('/submit', async (req, res) => {
   try {
     const sqliResponse = await pool.query(query);
     if (sqliResponse.rows.length > 0 && sqliResponse.rows[0].flag.length > 0) {
-      res.json({ success: true, query: query, message: "Successful injection!"});
+      res.json({ success: true, query: query, message: "Successful injection!" });
     } else {
-      res.json({ success: false, query: query, message: "Unsuccessful injection, valid query"});
+      res.json({ success: false, query: query, message: "Unsuccessful injection, valid query" });
     }
-  } catch (err) { 
-    res.status(400).json({ success: false, message: "Unsuccessful injection, invalid query"});
+  } catch (err) {
+    res.status(400).json({ success: false, message: "Unsuccessful injection, invalid query" });
   }
 });
 
