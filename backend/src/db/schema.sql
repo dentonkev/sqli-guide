@@ -9,5 +9,7 @@ CREATE TABLE IF NOT EXISTS questions (
 DROP TABLE IF EXISTS secrets;
 CREATE TABLE IF NOT EXISTS secrets (
     question_id TEXT PRIMARY KEY,
-    flag TEXT NOT NULL
+    flag TEXT NOT NULL,
+    username TEXT NULL,
+    password TEXT NULL
 );
