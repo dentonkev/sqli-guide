@@ -1,0 +1,129 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+  height: 97vh; 
+  gap: 20px;
+}
+
+.left-half {
+  flex: 1;
+  background-color: #333333;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+}
+
+.left-panel {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.panel-header {
+  display: flex;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  background-color: #555555;
+}
+
+.right-half {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  overflow-y: auto;
+  gap: 10px;
+}
+
+.top-right-panel, .bottom-right-panel {
+  flex: 1;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+}
+
+.top, .bottom {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  background-color: #333333;
+  height: 40.4vh; 
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 0px 0px 10px 10px;
+}
+
+.top {
+  align-items: center; 
+}
+
+.bottom {
+  font-size: 1.4rem;
+}
+
+.top > h3 {
+  font-size: 2rem;
+}
+
+.top p {
+  font-size: 0.8rem;
+}
+
+.top-injection-submission {
+  display: flex;
+  align-items: center; 
+  gap: 10px; 
+  margin-top: 20px;
+}
+
+.top button {
+  background-color: #262626;
+  color: #66a2c5;
+  border: none;
+  padding: 15px 20px; 
+  cursor: pointer;
+  border-radius: 7px;
+  font-size: 1.1rem;
+  font-family: 'Roboto Mono', 'Monaco';
+}
+
+input {
+  width: 100%; 
+  padding: 15px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  border: 1px solid #444;
+  background-color: #262626;
+  color: white;
+  font-family: 'Roboto Mono', 'Monaco';
+}
+
+input::placeholder {
+  color: #66a2c5;
+}
+
+button {
+  background-color: #262626;
+  color: #66a2c5;
+  border: none;
+  padding: 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 7px;
+  font-family: 'Roboto Mono', 'Monaco';
+}
+
+button:hover {
+  background-color: #555555;
+}
+
+.error {
+  color: #ff4d4d;
+  text-align: center;
+  font-size: 2rem;
+  margin: 20px 50px;
+}
+

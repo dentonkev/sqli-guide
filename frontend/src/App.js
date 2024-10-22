@@ -8,7 +8,6 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <h1>SQL Injection Guide</h1>
         <Routes>
           <Route path="/" element={<QuestionList />} />
           <Route path="/:qid" element={<Questions />} />
