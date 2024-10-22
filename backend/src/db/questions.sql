@@ -27,7 +27,7 @@ VALUES (
         'An OR clause could be helpful here', 
         'After your input there still might be some code, try commenting it out', 
         'Comments in sql must be followed by a space',
-        'Carefully look at string sytax in the provided SELECT statement'
+        'Carefully look at string syntax in the provided SELECT statement'
     ]
 );
 

@@ -18,10 +18,10 @@ const inject = async (res, query, userQuery, qNum) => {
     if (sqliResponse.rows.length > 0 && sqliResponse.rows[0].flag.length > 0 && sqliResponse.rows[qNum - 1].flag === correctFlag.rows[0].flag) {
       return res.json({ success: true, query: query, message: "Successful injection!" });
     } else {
-      return res.json({ success: false, query: query, message: "Unsuccessful injection, valid query" });
+      return res.json({ success: false, query: query, message: "Unsuccessful injection, valid injected query." });
     }
   } catch (err) {
-    return res.json({ success: false, query: query, message: "Unsuccessful injection, invalid query" });
+    return res.json({ success: false, query: query, message: "Unsuccessful injection, invalid injected query." });
   }
 }
 
@@ -67,7 +67,7 @@ router.post('/submit/q2', async (req, res) => {
   const values = userQuery.split(', ');
 
   if (values.length !== 2) {
-    return res.json({ success: false, message: 'Please provide both username and password in the format: <username>, <password>' });
+    return res.json({ success: false, query: 'Invalid Injection', message: 'Please provide both username and password in the format: <username>, <password>' });
   }
 
   const response = await pool.query('SELECT query FROM questions WHERE id = $1', ['q2']);
