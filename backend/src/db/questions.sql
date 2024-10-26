@@ -24,17 +24,16 @@ VALUES (
     'SELECT flag FROM secrets WHERE username = ''$1'' and password = ''$2'';',
     'test'' OR 1 = 1; --, pass',
     ARRAY [
-        'An OR clause could be helpful here', 
-        'After your input there still might be some code, try commenting it out', 
-        'Comments in sql must be followed by a space',
-        'Carefully look at string syntax in the provided SELECT statement'
+        'Think about how you can manipulate either username or passwrod to always be true.', 
+        'You must also bypass the AND clause here, in SQL AND takes precedence over OR clauses.', 
+        'When using SQL single quotation marks are used for string literals.'
     ]
 );
 
 -- q2 answer
 INSERT INTO secrets (question_id, flag, username, password)
 VALUES ('q2',
-    'SQLI_GUIDE{MUH1H11H1_F7A6_f04_Q2_L4L',
+    'SQLI_GUIDE{MUH1H11H1_F7A6_f04_Q2_L4L}',
     'thisissohard',
     'youwillnevercrackthis'
 );

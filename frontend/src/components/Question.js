@@ -11,6 +11,7 @@ const Question = () => {
   const [question, setQuestion] = useState();
   const [userQuery, setUserQuery] = useState('');
   const [message, setMessage] = useState('');
+  const [res, setRes] = useState('');
   const [query, setQuery] = useState('');
   const [success, setSuccess] = useState(false);
   const [hints, setHints] = useState([]);
@@ -34,6 +35,7 @@ const Question = () => {
     });
     setMessage(res.data.message);
     setQuery(res.data.query);
+    setRes(res.data.res);
 
     if (res.data.success) {
       setSuccess(true);
@@ -105,7 +107,8 @@ const Question = () => {
               <SyntaxHighlighter language="sql" style={atomDark} customStyle={{ fontSize: '1.0rem' }}>
                 {query},
               </SyntaxHighlighter>
-            <p><strong>Response: </strong><span style={{ color: success === true ? 'green' : 'red'}}>{message}</span></p>
+            <p><strong>Response: </strong>{res}</p>
+            <p><strong>Result: </strong><span style={{ color: success === true ? 'green' : 'red'}}>{message}</span></p>
           </div>
         </div>
 

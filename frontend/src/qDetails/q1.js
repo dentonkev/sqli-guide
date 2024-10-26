@@ -2,7 +2,7 @@ import React from 'react';
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-const Q1Details = () => (
+const q1 = () => (
   <div>
     <h3>Understanding SQL Injection (SQLI)</h3>
     <p>
@@ -21,10 +21,10 @@ const Q1Details = () => (
       The 'OR 1=1' technique is a method where the attacker inserts an OR condition that always evaluates to true. For example:
     </p>
     <SyntaxHighlighter language="sql" style={atomDark} customStyle={{ fontSize: '0.9rem' }}>
-      SELECT password FROM admin WHERE name = '$1';
+      SELECT darkMatterFormula FROM garage WHERE password = '$1';
     </SyntaxHighlighter>
     <p>
-      By injecting a payload that adds an OR clause like <code>OR 1=1</code>, the query will return true, effectively bypassing any authentication implemented by the application.
+      A normal user would input something like "ricksucks123" to get into the garage, however by injecting a payload that adds a clause like <code>OR 1=1</code>, the query will return true, effectively bypassing any authentication implemented by the application.
     </p>
     <p>
       Your task is to craft an SQL injection payload that leverages this technique. Focus on how you can inject a condition that forces the query to always be valid, and use hints if you are stuck.
@@ -32,4 +32,4 @@ const Q1Details = () => (
   </div>
 );
 
-export default Q1Details;
+export default q1;
