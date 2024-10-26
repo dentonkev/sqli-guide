@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const QuestionList = () => {
   const [questions, setQuestions] = useState([]);
-  const qids = ['q1', 'q2'];
+  const qids = ['q1', 'q2', 'q3'];
 
   useEffect(() => {
     const getQuestions = async () => {

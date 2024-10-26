@@ -10,7 +10,7 @@
 }
 
 .home {
-  color: white;
+  color: #73d989;
   text-decoration: none;
   font-size: 1rem;
 }
@@ -42,6 +42,7 @@
 }
 
 .panel-header {
+  font-size: 1rem;
   display: flex;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -69,6 +70,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center; 
   background-color: #333333;
   height: 40.4vh; 
   padding: 10px;
@@ -113,7 +115,7 @@
 input {
   width: 100%; 
   padding: 10px;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   border-radius: 5px;
   border: 1px solid #444;
   background-color: #262626;

@@ -94,6 +94,7 @@ const Question = () => {
               <div className="top-injection-submission"> 
                 <input
                   type="text"
+                  size="45"
                   value={userQuery}
                   onChange={(e) => setUserQuery(e.target.value)}
                   placeholder='Enter SQL Injection'

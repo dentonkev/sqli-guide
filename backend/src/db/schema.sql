@@ -18,3 +18,14 @@ CREATE TABLE IF NOT EXISTS q2secrets (
     username TEXT NULL,
     password TEXT NULL
 );
+
+DROP TABLE IF EXISTS q3secrets;
+CREATE TABLE IF NOT EXISTS q3secrets (
+    flag TEXT NOT NULL
+);
+
+DROP TABLE IF EXISTS q3users;
+CREATE TABLE IF NOT EXISTS q3users (
+    username TEXT NOT NULL,
+    password TEXT NOT NULL
+);

@@ -60,7 +60,6 @@ router.post('/submit/q1', async (req, res) => {
       return res.json({ success: false, res: '', query: query, message: "Unsuccessful injection, valid injected query." });
     }
   } catch (err) {
-    console.log(err);
     return res.json({ success: false, res: '', query: query, message: "Unsuccessful injection, invalid injected query." });
   }
 });
@@ -89,6 +88,29 @@ router.post('/submit/q2', async (req, res) => {
 
     if (sqliResponse.rows.length > 0 && sqliResponse.rows[0].flag.length > 0 && sqliResponse.rows[0].flag === correctFlag.rows[0].flag) {
       return res.json({ success: true, res: sqliResponse.rows[0].flag, query: query, message: "Successful injection!" });
+    } else {
+      return res.json({ success: false, res: '', query: query, message: "Unsuccessful injection, valid injected query." });
+    }
+  } catch (err) {
+    return res.json({ success: false, res: '', query: query, message: "Unsuccessful injection, invalid injected query." });
+  }
+});
+
+router.post('/submit/q3', async (req, res) => {
+  const { userQuery } = req.body;
+  const response = await pool.query('SELECT query FROM questions WHERE id = $1', ['q3']);
+  let query = (response.rows[0].query).replace('$1', userQuery);
+
+  if (!checkQuery(userQuery)) {
+    return res.json({ success: false, query: query, message: 'Dangerous query detected, pls stop tryna break the database.' });
+  }
+
+  try {
+    const sqliResponse = await pool.query(query);
+    const correctFlag = await pool.query('SELECT * FROM q3secrets');
+    
+    if (sqliResponse.rows.length > 0 && sqliResponse.rows[0].username === correctFlag.rows[0].flag) {
+      return res.json({ success: true, res: sqliResponse.rows[0].username, query: query, message: "Successful injection!" });
     } else {
       return res.json({ success: false, res: '', query: query, message: "Unsuccessful injection, valid injected query." });
     }

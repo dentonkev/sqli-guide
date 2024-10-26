@@ -36,3 +36,24 @@ VALUES ('SQLI_GUIDE{MUH1H11H1_F7A6_f04_Q2_L4L}',
     'thisissohard',
     'youwillnevercrackthis'
 );
+
+-- q3 question
+INSERT INTO questions (id, query, answer, hints) 
+VALUES (
+    'q3', 
+    'SELECT username, password FROM q3users WHERE username = ''$1'';',
+    'test'' UNION SELECT flag, '''' FROM q3secrets; --',
+    ARRAY [
+        'Use a UNION SELECT statement to retrieve the flag from a different table.', 
+        'Ensure the number of columns in your UNION matches the number of columns in the original query.', 
+        'Ensure the data types of columns in your UNION matches the data types in the original query.'
+    ]
+);
+
+-- Inserting example users
+INSERT INTO q3users (username, password)
+VALUES ('caitlin', 'verystrongpassword'), ('denton', 'HAHAHFDATHISISKILLINGME');
+
+-- q3 answer
+INSERT INTO q3secrets (flag)
+VALUES ('SQLI_GUIDE{F7AG_4_Q0ESTI0N_NUM_T3HEE}');
