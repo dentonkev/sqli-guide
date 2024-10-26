@@ -18,7 +18,6 @@ const QuestionList = () => {
     getQuestions();
   }, [qids]);
 
-
   return (
     <div>
       {questions.map((question) => (

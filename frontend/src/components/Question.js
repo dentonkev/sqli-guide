@@ -5,6 +5,7 @@ import '../styles/Question.css'
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import 'boxicons';
+import NavBar from "../components/navBar"
 
 const Question = () => {
   const { qid } = useParams();
@@ -55,63 +56,66 @@ const Question = () => {
   }
 
   return (
-    <div className="container">
-      <div className="left-half">
-        <div className="panel-header">Description<box-icon name='paper-plane' color='#66a2c5'></box-icon></div>
-        <div className="left-panel">
-          {Details}
-          <h2>Question {qid[1]}:</h2>
-          <SyntaxHighlighter language="sql" style={atomDark} customStyle={{ fontSize: '1.0rem' }}>
-            {question.query}
-          </SyntaxHighlighter>
-          <div>
-            <h3>Hints:</h3>
-            {
-              question.hints.map((hint, index) => (
-                <div key={index}>
-                  <button 
-                    onClick={() => toggleHint(index)}>
-                    Toggle Hint {index + 1}
-                  </button>
-                  <p>{hints[index] ? hint : ''}</p>
-                </div>
-              ))
-            }
-          </div>
-        </div>
-      </div>
-      
-      <div className="right-half">
-        <div className="top-right-panel">
-          <div className="panel-header">Injection<box-icon name='injection' color='#519369'></box-icon></div>
-          <div className="top">
-            <h3>Inject SQL</h3>
-            <p>Note: Use comma seperated input when injecting multiple values.</p>
-            <p>Example: &lt;injection 1&gt;, &lt;injection 2&gt;</p>
-            <div className="top-injection-submission"> 
-              <input
-                type="text"
-                value={userQuery}
-                onChange={(e) => setUserQuery(e.target.value)}
-                placeholder='Enter SQL Injection'
-              />
-              <button onClick={() => submit()} >Submit</button>
+    <div>
+      <NavBar />
+      <div className="container">
+        <div className="left-half">
+          <div className="panel-header">Description<box-icon name='paper-plane' color='#66a2c5'></box-icon></div>
+          <div className="left-panel">
+            {Details}
+            <h2>Question {qid[1]}:</h2>
+            <SyntaxHighlighter language="sql" style={atomDark} customStyle={{ fontSize: '0.9rem' }}>
+              {question.query}
+            </SyntaxHighlighter>
+            <div>
+              <h3>Hints:</h3>
+              {
+                question.hints.map((hint, index) => (
+                  <div key={index}>
+                    <button 
+                      onClick={() => toggleHint(index)}>
+                      Toggle Hint {index + 1}
+                    </button>
+                    <p>{hints[index] ? hint : ''}</p>
+                  </div>
+                ))
+              }
             </div>
           </div>
         </div>
         
-        <div className="bottom-right-panel">
-          <div className="panel-header">Results<box-icon name='ghost' color='#e1f0a5'></box-icon></div>
-          <div className="bottom">
-            <p><strong>Injected Query:</strong></p>
-              <SyntaxHighlighter language="sql" style={atomDark} customStyle={{ fontSize: '1.0rem' }}>
-                {query},
-              </SyntaxHighlighter>
-            <p><strong>Response: </strong>{res}</p>
-            <p><strong>Result: </strong><span style={{ color: success === true ? 'green' : 'red'}}>{message}</span></p>
+        <div className="right-half">
+          <div className="top-right-panel">
+            <div className="panel-header">Injection<box-icon name='injection' color='#519369'></box-icon></div>
+            <div className="top">
+              <h3>Inject SQL</h3>
+              <p>Note: Use comma seperated input when injecting multiple values.</p>
+              <p>Example: &lt;injection 1&gt;, &lt;injection 2&gt;</p>
+              <div className="top-injection-submission"> 
+                <input
+                  type="text"
+                  value={userQuery}
+                  onChange={(e) => setUserQuery(e.target.value)}
+                  placeholder='Enter SQL Injection'
+                />
+                <button onClick={() => submit()} >Submit</button>
+              </div>
+            </div>
           </div>
-        </div>
+          
+          <div className="bottom-right-panel">
+            <div className="panel-header">Results<box-icon name='ghost' color='#e1f0a5'></box-icon></div>
+            <div className="bottom">
+              <p><strong>Injected Query:</strong></p>
+                <SyntaxHighlighter language="sql" style={atomDark} customStyle={{ fontSize: '0.9rem' }}>
+                  {query},
+                </SyntaxHighlighter>
+              <p><strong>Response: </strong>{res}</p>
+              <p><strong>Result: </strong><span style={{ color: success === true ? 'green' : 'red'}}>{message}</span></p>
+            </div>
+          </div>
 
+        </div>
       </div>
     </div>
   );
