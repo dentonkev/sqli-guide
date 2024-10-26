@@ -8,7 +8,7 @@ const checkQuery = (query) => {
 
 const inject = async (res, query, userQuery, qNum) => {
   if (!checkQuery(userQuery)) {
-    return res.status(400).json({ success: false, query: query, message: 'Dangerous query detected, pls stop tryna break the database.' });
+    return res.json({ success: false, query: query, message: 'Dangerous query detected, pls stop tryna break the database.' });
   }
 
   try {

@@ -5,9 +5,9 @@ VALUES (
     'SELECT flag FROM secrets WHERE question_id = ''$1'';',
     'test'' OR 1 = 1; -- ',
     ARRAY [
-        'An OR clause could be helpful here', 
-        'After your input there still might be some code, try commenting it out', 
-        'Choose something after your OR clause that will always be true'
+        'Your injection comes after an opened '', close it off then proceed with an OR clause.', 
+        'Choose something after your OR clause that will always be true',
+        'After your input there still might be some code, try commenting it out.'
     ]
 );
 
