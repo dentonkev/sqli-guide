@@ -14,12 +14,16 @@ const Question = () => {
   const [query, setQuery] = useState('');
   const [success, setSuccess] = useState(false);
   const [hints, setHints] = useState([]);
+  const [Details, setDetails] = useState(null);
 
   useEffect(() => {
     const getQuestion = async () => {
       const res = await axios.get(`http://localhost:5000/api/questions/${qid}`);
       setQuestion(res.data);
       setHints(new Array(res.data.hints.length).fill(false));
+
+      const d = await import(`../qDetails/${qid}.js`);
+      setDetails(d.default);
     }
     getQuestion();
   }, [qid]);
@@ -53,12 +57,9 @@ const Question = () => {
       <div className="left-half">
         <div className="panel-header">Description<box-icon name='paper-plane' color='#66a2c5'></box-icon></div>
         <div className="left-panel">
-          <h3>Question {qid[1]} Details:</h3>
-          <div>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-          </div>
-          <h3>Question {qid[1]}:</h3>
-          <SyntaxHighlighter language="sql" style={atomDark}>
+          {Details}
+          <h2>Question {qid[1]}:</h2>
+          <SyntaxHighlighter language="sql" style={atomDark} customStyle={{ fontSize: '1.0rem' }}>
             {question.query}
           </SyntaxHighlighter>
           <div>
@@ -101,7 +102,7 @@ const Question = () => {
           <div className="panel-header">Results<box-icon name='ghost' color='#e1f0a5'></box-icon></div>
           <div className="bottom">
             <p><strong>Injected Query:</strong></p>
-              <SyntaxHighlighter language="sql" style={atomDark} customStyle={{ fontSize: '1.15rem' }}>
+              <SyntaxHighlighter language="sql" style={atomDark} customStyle={{ fontSize: '1.0rem' }}>
                 {query},
               </SyntaxHighlighter>
             <p><strong>Response: </strong><span style={{ color: success === true ? 'green' : 'red'}}>{message}</span></p>

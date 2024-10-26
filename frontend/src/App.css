@@ -3,5 +3,9 @@ body {
   background-color: #262626;
   color: #ffffff;
   font-family: 'Roboto Mono', 'Monaco';
-  font-size: 1.05rem;
+  font-size: 0.9rem;
+}
+
+a {
+  color: #92e6f0;
 }

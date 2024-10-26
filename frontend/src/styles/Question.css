@@ -3,7 +3,7 @@
   justify-content: space-between;
   margin: 10px;
   height: 97vh; 
-  gap: 20px;
+  gap: 10px;
 }
 
 .left-half {
@@ -61,11 +61,11 @@
 }
 
 .bottom {
-  font-size: 1.4rem;
+  font-size: 1.1rem;
 }
 
 .top > h3 {
-  font-size: 2rem;
+  font-size: 1.75rem;
 }
 
 .top p {
@@ -83,7 +83,7 @@
   background-color: #262626;
   color: #66a2c5;
   border: none;
-  padding: 15px 20px; 
+  padding: 10px 20px; 
   cursor: pointer;
   border-radius: 7px;
   font-size: 1.1rem;
@@ -92,7 +92,7 @@
 
 input {
   width: 100%; 
-  padding: 15px;
+  padding: 10px;
   font-size: 1.1rem;
   border-radius: 5px;
   border: 1px solid #444;
@@ -109,7 +109,7 @@ button {
   background-color: #262626;
   color: #66a2c5;
   border: none;
-  padding: 15px;
+  padding: 12px;
   font-size: 1rem;
   cursor: pointer;
   border-radius: 7px;
