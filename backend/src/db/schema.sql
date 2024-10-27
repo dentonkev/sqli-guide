@@ -29,3 +29,15 @@ CREATE TABLE IF NOT EXISTS q3users (
     username TEXT NOT NULL,
     password TEXT NOT NULL
 );
+
+DROP TABLE IF EXISTS secretsq4;
+CREATE TABLE IF NOT EXISTS secretsq4 (
+    flag TEXT NOT NULL
+);
+
+DROP TABLE IF EXISTS q4users;
+CREATE TABLE IF NOT EXISTS q4users (
+    age INTEGER NOT NULL,
+    dog_name TEXT NOT NULL,
+    name TEXT NOT NULL
+);

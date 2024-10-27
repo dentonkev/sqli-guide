@@ -85,6 +85,7 @@ const Question = () => {
         </div>
         
         <div className="right-half">
+
           <div className="top-right-panel">
             <div className="panel-header">Injection<box-icon name='injection' color='#519369'></box-icon></div>
             <div className="top">
@@ -111,8 +112,9 @@ const Question = () => {
                 <SyntaxHighlighter language="sql" style={atomDark} customStyle={{ fontSize: '0.9rem' }}>
                   {query},
                 </SyntaxHighlighter>
-              <p><strong>Response: </strong>{res}</p>
-              <p><strong>Result: </strong><span style={{ color: success === true ? 'green' : 'red'}}>{message}</span></p>
+              <p><strong>Response: </strong></p>
+              <div className="response">{res}</div> 
+              <p><strong>Result: </strong><span className= "result" style={{ color: success ? 'green' : 'red'}}>{message}</span></p>
             </div>
           </div>
 

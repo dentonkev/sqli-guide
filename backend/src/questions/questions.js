@@ -119,4 +119,34 @@ router.post('/submit/q3', async (req, res) => {
   }
 });
 
+router.post('/submit/q4', async (req, res) => {
+  let { userQuery } = req.body;
+  // const filter = /\b(SELECT|select|UNION|union|WHERE|where|FROM|from)\b/g;
+  // userQuery = userQuery.replace(filter, '');
+
+  const response = await pool.query('SELECT query FROM questions WHERE id = $1', ['q4']);
+  let query = (response.rows[0].query).replace('$1', userQuery);
+
+  if (!checkQuery(userQuery)) {
+    return res.json({ success: false, query: query, message: 'Dangerous query detected, pls stop tryna break the database.' });
+  }
+
+  try {
+    const sqliResponse = await pool.query(query);
+    const correctFlag = await pool.query('SELECT * FROM secretsq4');
+    
+    if (sqliResponse.rows.length > 0 && sqliResponse.rows[0].name === correctFlag.rows[0].flag) {
+      return res.json({ success: true, res: sqliResponse.rows[0].name, query: query, message: "Successful injection!" });
+    } else {
+      let result = '';
+      for (let row of sqliResponse.rows) {
+        result += Object.values(row).join(', ') + '\n';
+      }
+      return res.json({ success: false, res: result, query: query, message: "Unsuccessful injection, valid injected query." });
+    }
+  } catch (err) {
+    return res.json({ success: false, res: '', query: query, message: "Unsuccessful injection, invalid injected query." });
+  }
+});
+
 export default router;
