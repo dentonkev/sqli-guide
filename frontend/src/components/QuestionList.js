@@ -19,14 +19,17 @@ const QuestionList = () => {
   }, [qids]);
 
   return (
-    <div>
-      {questions.map((question) => (
-        <div key={question.id}>
+    <div className="home-page">
+      <h1>SQL Injection Guide</h1>
+      {
+        questions.map((question) => (
+        <div className="question-card" key={question.id}>
           <Link to={`/${question.id}`}>
-            <h3>Question {question.id}</h3>
+            <h3>Question {question.id[1].toUpperCase()}</h3>
           </Link>
         </div>
-      ))}
+      ))
+      }
     </div>
   );
 }
