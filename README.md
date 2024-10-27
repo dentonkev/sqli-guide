@@ -7,38 +7,38 @@ Follow these steps to setup the project on a Mac.
 
 1. **Clone the Repository**
 ```bash
-   git clone git@github.com:dentonkev/sqli-guide.git
-   cd sqli-guide
+git clone git@github.com:dentonkev/sqli-guide.git
+cd sqli-guide
 ```
 2. **Install PostgreSQL:**
 
 - Install postgresql using homebrew:
 ```bash
-    brew install postgresql@15
+brew install postgresql@15
 ```
 
 - Start the PostgreSQL service:
 ```bash
-    brew services start postgresql@15
+brew services start postgresql@15
 ```
 
 - Create the database:
 ```bash
-    createdb sqli_guide
+createdb sqli_guide
 ```
 
 3. **Backend**
 - Navigate to the backend directory:
 ```bash
-    cd backend
-    npm install
+cd backend
+npm install
 ```
 
 4. **Frontend**
 - Navigate to the frontend directory:
 ```bash
-    cd ../frontend
-    npm install
+cd ../frontend
+npm install
 ``` 
 
 ## Setup
@@ -55,8 +55,8 @@ DB_PORT=5432
 
 Load the schema and questions in the `backend` directory.
 ```bash
-    psql -d sqli_guide -f src/db/schema.sql
-    psql -d sqli_guide -f src/db/questions.sql
+psql -d sqli_guide -f src/db/schema.sql
+psql -d sqli_guide -f src/db/questions.sql
 ```
 
 ## Running the Project
@@ -64,14 +64,14 @@ Load the schema and questions in the `backend` directory.
 
 - In the `backend` directory run:
 ```bash
-    npm start
+npm start
 ```
 
 2. **Frontend**
 
 - In a new terminal in the `frontend` directory run:
 ```bash
-    npm start
+npm start
 ```
 
 Once both servers are running, you can access the platform at http://localhost:3000.
