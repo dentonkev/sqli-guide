@@ -41,3 +41,16 @@ CREATE TABLE IF NOT EXISTS q4users (
     dog_name TEXT NOT NULL,
     name TEXT NOT NULL
 );
+
+DROP TABLE IF EXISTS q5secrets;
+CREATE TABLE IF NOT EXISTS q5secrets (
+    flag TEXT NOT NULL,
+    created_by TEXT NOT NULL, 
+    created_by_age INTEGER NOT NULL
+);
+
+DROP TABLE IF EXISTS q5users;
+CREATE TABLE IF NOT EXISTS q5users (
+    username TEXT NOT NULL,
+    password TEXT NOT NULL
+);

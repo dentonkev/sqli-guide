@@ -17,11 +17,11 @@ const NavBar = () => {
         <Link to={`/${nextQ}`} className="home">Next Question: Question {nextQuestionNum}</Link>
       </div>
     )
-  } else if (qid === 'q10') {
+  } else if (qid === 'q5') {
     return (
       <div className="NavBar">
-        <Link to="/" className="home">Home</Link>
         <Link to={`/${prevQ}`} className="home">Previous Question: Question {prevQuestionNum}</Link>
+        <Link to="/" className="home">Home</Link>
       </div>
     )
   } else {

@@ -114,7 +114,7 @@ const Question = () => {
                 </SyntaxHighlighter>
               <p><strong>Response: </strong></p>
               <div className="response">{res}</div> 
-              <p><strong>Result: </strong><span className= "result" style={{ color: success ? 'green' : 'red'}}>{message}</span></p>
+              <p><strong>Result: </strong><span className= "result" style={{ color: success ? '#7acd73' : '#dc6665'}}>{message}</span></p>
             </div>
           </div>
 

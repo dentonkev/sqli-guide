@@ -5,7 +5,7 @@ const q4 = () => (
   <div>
     <h3>Finding Table Names and Extracting Data</h3>
     <p>
-      In this challenge, your goal is to discover the table name and retrieve the flag from it. 
+      In this question, the goal is to discover the table name and retrieve the flag from it. 
     </p>
     <p>
       The first step is to use <strong>INFORMATION_SCHEMA.TABLES</strong> to find the table name. The <code>INFORMATION_SCHEMA</code> is a special schema that contains information about all other schemas in the database, including table names.
