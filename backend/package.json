@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run load-db && nodemon src/index.js",
-    "load-db": "psql -U dentonkev -d sqli_guide -f src/db/schema.sql && psql -U dentonkev -d sqli_guide -f src/db/questions.sql"
+    "load-db": "psql -d sqli_guide -f src/db/schema.sql && psql -d sqli_guide -f src/db/questions.sql"
   },
   "author": "Denton Kev",
   "license": "ISC",

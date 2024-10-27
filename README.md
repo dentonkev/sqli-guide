@@ -7,7 +7,14 @@ Follow these steps to setup the project on a Mac.
 
 1. **Clone the Repository**
 ```bash
+# Via ssh 
 git clone git@github.com:dentonkev/sqli-guide.git
+
+# OR 
+
+# Via http
+git clone https://github.com/dentonkev/sqli-guide.git
+
 cd sqli-guide
 ```
 2. **Install PostgreSQL:**
@@ -71,6 +78,7 @@ npm start
 
 - In a new terminal in the `frontend` directory run:
 ```bash
+cd ../frontend
 npm start
 ```
 
