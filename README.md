@@ -2,7 +2,7 @@
 
 This project was my Something Awesome for the course COMP6841 which I took in 24T3. It is a platform designed to teach users about SQL injection through interactive challenges. 
 
-**Note:** Use a chromium based browser to run the project since other browser such as Firefox blocks cross-origin resource sharing (cors)
+**Note:** Use a chromium based browser to run the project since other browser such as Firefox blocks cross-origin resource sharing (cors).
 
 ## Installation
 Follow these steps to setup the project on a Mac.
